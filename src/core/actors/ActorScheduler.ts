@@ -1,7 +1,8 @@
-import { Actor } from "./actor";
+import { Actor } from "./Actor";
 import { Char } from "./Char";
 import { PRIORITY } from "./PRIORITY";
 
+// TODO : id 관리 객체인 EntityManager, 턴 관리 객체인 Scheduler 로 분리 필요
 export class ActorScheduler {
   private _all = new Set<Actor>();
   private _chars = new Set<Char>();
@@ -78,11 +79,11 @@ export class ActorScheduler {
       return;
     }
 
-    if (actor.id() === 0) {
+    if (actor.id === 0) {
       actor.assignId(this._nextID++);
     }
 
-    this._ids.set(actor.id(), actor);
+    this._ids.set(actor.id, actor);
 
     this._all.add(actor);
     actor.timer.spend(time);

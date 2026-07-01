@@ -1,8 +1,8 @@
-import { Actor } from "../actor";
+import { Actor } from "../Actor";
 
 export class Buff extends Actor {
   public act(): boolean {
-    this.diactivate();
+    this.timer.diactivate();
     return true;
   }
 }
