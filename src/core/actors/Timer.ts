@@ -39,11 +39,11 @@ export class Timer {
     this.spendConstant(-now);
   }
 
-  public timeToNow(now: number): void {
-    this._time = now;
+  public setTime(time: number): void {
+    this._time = time;
   }
 
-  public diactivate(): void {
+  public deactivate(): void {
     this._time = Number.MAX_VALUE;
   }
 }

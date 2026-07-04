@@ -23,7 +23,7 @@ export class World {
     actor.onAdd();
 
     if (actor instanceof Char) {
-      for (const buff of actor.buffs()) {
+      for (const buff of actor.buffs) {
         this.add(buff);
       }
     }

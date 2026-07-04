@@ -2,7 +2,7 @@ import { Actor } from "../Actor";
 
 export class Buff extends Actor {
   public act(): boolean {
-    this.timer.diactivate();
+    this.timer.deactivate();
     return true;
   }
 }
