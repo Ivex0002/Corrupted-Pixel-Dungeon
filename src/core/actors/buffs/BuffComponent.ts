@@ -22,4 +22,12 @@ export class BuffComponent implements Iterable<Buff> {
   has(buff: Buff): boolean {
     return this.buffs.has(buff);
   }
+
+  get size(): number {
+    return this.buffs.size;
+  }
+
+  forEach(callback: (buff: Buff) => void): void {
+    this.buffs.forEach(callback);
+  }
 }
