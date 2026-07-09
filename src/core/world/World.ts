@@ -1,5 +1,5 @@
 import { Actor } from "../actors/Actor";
-import { Char } from "../actors/Char";
+import { Char } from "../actors/char/Char";
 import { EntityManager } from "./EntityManager";
 import { Scheduler } from "./Scheduler";
 

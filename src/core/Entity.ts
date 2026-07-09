@@ -1,5 +1,6 @@
-abstract class Entity {
+export abstract class Entity {
   private _id?: number;
+  name!: string;
   readonly tags = new Set<string>();
 
   public get id(): number {
@@ -21,4 +22,8 @@ abstract class Entity {
   //   public get isSpawned(): boolean {
   //     return this._id !== undefined;
   //   }
+}
+
+export abstract class Ownable extends Entity {
+  ownerId!: number;
 }

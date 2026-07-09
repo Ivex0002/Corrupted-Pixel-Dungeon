@@ -1,3 +1,4 @@
+import { Entity } from "../Entity";
 import { PRIORITY } from "./PRIORITY";
 import { Timer } from "./Timer";
 

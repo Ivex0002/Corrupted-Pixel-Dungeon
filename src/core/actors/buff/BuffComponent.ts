@@ -1,6 +1,6 @@
 import { Buff } from "./Buff";
 
-export class BuffComponent implements Iterable<Buff> {
+export class BuffSet implements Iterable<Buff> {
   private readonly buffs = new Set<Buff>();
 
   [Symbol.iterator](): IterableIterator<Buff> {
@@ -11,7 +11,7 @@ export class BuffComponent implements Iterable<Buff> {
     this.buffs.add(buff);
   }
 
-  remove(buff: Buff): void {
+  delete(buff: Buff): void {
     this.buffs.delete(buff);
   }
 
@@ -29,5 +29,11 @@ export class BuffComponent implements Iterable<Buff> {
 
   forEach(callback: (buff: Buff) => void): void {
     this.buffs.forEach(callback);
+  }
+
+  tick(turn: number = 1): void {
+    for (const buff of this) {
+      buff.timer.spend(turn);
+    }
   }
 }
