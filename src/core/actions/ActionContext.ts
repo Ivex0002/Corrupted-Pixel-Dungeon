@@ -9,6 +9,8 @@ export interface ActionContext {
 
   dungeon: Dungeon;
   world: World;
+  targetPos: number;
+  targetId: number;
   //   level: Level;
 
   //   eventBus: EventBus;

@@ -5,3 +5,5 @@ export interface ItemAction {
   enabled(ctx: ActionContext): boolean;
   execute(ctx: ActionContext): void;
 }
+
+export type ItemActions = Record<string, ItemAction>;
