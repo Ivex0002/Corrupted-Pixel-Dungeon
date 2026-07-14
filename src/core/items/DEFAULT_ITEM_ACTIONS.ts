@@ -9,6 +9,7 @@ export const DEFAULT_ITEM_ACTIONS = {
     },
     execute(ctx) {
       const { hero, item } = ctx;
+      hero.timer.spend(1);
       item.ownerId = hero.pos;
     },
   },
@@ -19,7 +20,8 @@ export const DEFAULT_ITEM_ACTIONS = {
       return true;
     },
     execute(ctx) {
-      const { targetPos, item } = ctx;
+      const { targetPos, item, hero } = ctx;
+      hero.timer.spend(1);
       item.ownerId = targetPos;
     },
   },
