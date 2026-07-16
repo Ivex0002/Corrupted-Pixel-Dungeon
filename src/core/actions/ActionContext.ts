@@ -3,9 +3,9 @@ import { Dungeon } from "../Dungeon";
 import { Item } from "../items/Item";
 import { World } from "../world/world";
 
-export interface ActionContext {
+export interface ActionContext<T extends Item = Item> {
   hero: Hero;
-  item: Item;
+  item: T;
 
   dungeon: Dungeon;
   world: World;

@@ -1,9 +1,11 @@
+import { TEXT_ITEM } from "../../i18n/TEXT_ITEM";
 import { ItemActions } from "../ItemAction";
+import { Equipment } from "./Equipment";
 
 // { label: "", enabled(ctx) {}, execute(ctx) {} },
 export const EQUIPMENT_ACTIONS = {
   equip: {
-    label: "equip",
+    translationKey: TEXT_ITEM.EQUIPMENT.EQUIP,
     enabled(ctx) {
       return true;
     },
@@ -14,7 +16,7 @@ export const EQUIPMENT_ACTIONS = {
   },
 
   unequip: {
-    label: "unequip",
+    translationKey: TEXT_ITEM.EQUIPMENT.UNEQUIP,
     enabled(ctx) {
       return true;
     },
@@ -23,4 +25,4 @@ export const EQUIPMENT_ACTIONS = {
       //   item.ownerId = hero.inventory.id;
     },
   },
-} satisfies ItemActions;
+} satisfies ItemActions<Equipment>;

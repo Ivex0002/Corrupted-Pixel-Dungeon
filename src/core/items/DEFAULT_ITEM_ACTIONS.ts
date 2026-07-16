@@ -1,9 +1,10 @@
-import { ItemAction, ItemActions } from "./ItemAction";
+import { TEXT_ITEM } from "../i18n/TEXT_ITEM";
+import { ItemActions } from "./ItemAction";
 
 // { label: "", enabled(ctx) {}, execute(ctx) {} },
 export const DEFAULT_ITEM_ACTIONS = {
   drop: {
-    label: "drop",
+    translationKey: TEXT_ITEM.DROP,
     enabled(ctx) {
       return true;
     },
@@ -15,7 +16,7 @@ export const DEFAULT_ITEM_ACTIONS = {
   },
 
   throw: {
-    label: "throw",
+    translationKey: TEXT_ITEM.THROW,
     enabled(ctx) {
       return true;
     },
@@ -27,7 +28,7 @@ export const DEFAULT_ITEM_ACTIONS = {
   },
 
   pickUp: {
-    label: "pick up",
+    translationKey: TEXT_ITEM.PICK_UP,
     enabled(ctx) {
       return true;
     },
