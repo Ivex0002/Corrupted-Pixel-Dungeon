@@ -1,32 +1,64 @@
 import { Bag } from "../../items/bag/Bag";
 import { Item } from "../../items/Item";
-import { Backpack } from "./Backpack";
+import { Constructor } from "../../util/Constructor";
+import { generalize } from "../../util/generalize";
 
-// TODO : bags 우선순위 로직 구현 > 추후에 가방 추가될때 유연하게 대처 가능하게.
 export class Inventory {
-  readonly backpack = new Backpack();
-
   readonly bags: Bag[] = [];
 
-  constructor() {
-    this.bags.push(this.backpack);
+  private readonly bagIndex = new Map<Constructor<Item>, Bag[]>();
+
+  constructor(baseBags: readonly Bag[]) {
+    for (const bag of baseBags) {
+      this.addBag(bag);
+    }
   }
 
-  // 단순하게 배열만으로 아이템 넣는 우선순위를 구현
-  // UI 쪽은 따로 설정 ?
-  addBag(bag: Bag) {
-    this.bags.unshift(bag);
+  private sortBags(bags: Bag[]): void {
+    bags.sort((a, b) => b.config.priority - a.config.priority);
   }
 
-  addItem(item: Item): boolean {
-    for (const bag of this.bags) {
-      if (!bag.canHold(item)) continue;
+  private indexBag(bag: Bag): void {
+    for (const type of bag.config.acceptedTypes) {
+      const bags = this.bagIndex.get(type);
 
-      if (bag.store(item)) return true;
+      if (bags) {
+        bags.push(bag);
+        this.sortBags(bags);
+      } else {
+        this.bagIndex.set(type, [bag]);
+      }
+    }
+  }
+
+  public addBag(bag: Bag): void {
+    this.bags.push(bag);
+    this.sortBags(this.bags);
+    this.indexBag(bag);
+  }
+
+  public addItem(item: Item): boolean {
+    for (const type of generalize(item)) {
+      const bags = this.bagIndex.get(type);
+
+      if (!bags) {
+        continue;
+      }
+
+      for (const bag of bags) {
+        if (bag.store(item)) {
+          return true;
+        }
+      }
     }
 
     return false;
   }
+
+  // TODO : 가방간의 아이템 이동 로직 필요
+  // 가방 추가시 호출해서 아이템 정리 한번 해야됨
+  // > 그냥 전체 아이템 플랫하게 두고 다시 재분배?
+  // > 동일 type 다른 가방 사이의 아이템 분배도 신경써야함
 
   remove(item: Item): boolean;
 

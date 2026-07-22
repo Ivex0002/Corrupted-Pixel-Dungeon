@@ -1,10 +1,10 @@
-import { Wand } from "../../wand/Wand";
 import { Bag } from "../Bag";
+import { BAGS } from "../BAGS";
 
 export class MagicalHolster extends Bag {
   public img = "NO_IMG";
 
   constructor() {
-    super({ capacity: 20, acceptedTypes: [Wand] });
+    super(BAGS.magicalHolster);
   }
 }

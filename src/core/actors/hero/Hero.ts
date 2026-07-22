@@ -1,6 +1,7 @@
 import { Char } from "../char/Char";
-import { Inventory } from "./inventory";
+import { HeroBackpack } from "./HeroBackpack";
+import { Inventory } from "./Inventory";
 
 export class Hero extends Char {
-  readonly inventory = new Inventory();
+  readonly inventory = new Inventory([new HeroBackpack()]);
 }
