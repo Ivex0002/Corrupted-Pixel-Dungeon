@@ -60,11 +60,19 @@ export class Inventory {
   // > 그냥 전체 아이템 플랫하게 두고 다시 재분배?
   // > 동일 type 다른 가방 사이의 아이템 분배도 신경써야함
 
-  remove(item: Item): boolean;
+  // world 혹은 game 등의 총괄 메서드에서 이동 로직 구현
+  // > 여기서 ownerId 신규 등록까지 관리 ?
 
-  contains(item: Item): boolean;
+  // move(item: Item, to: number): boolean {
+  //   const bag = this.bags.find((b) => b.id === item.ownerId);
 
-  find<T extends Item>(): T[];
+  //   if (!bag) return false;
 
-  getAllItems(): readonly Item[];
+  //   if (bag.remove(item)) {
+  //     item.ownerId = to;
+  //     return true;
+  //   }
+
+  //   return false;
+  // }
 }

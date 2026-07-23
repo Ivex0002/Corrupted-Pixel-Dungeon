@@ -2,10 +2,12 @@ import { Actor } from "../actors/Actor";
 import { Char } from "../actors/char/Char";
 import { EntityManager } from "./EntityManager";
 import { Scheduler } from "./Scheduler";
+import { WorldActions } from "./WorldActions";
 
 export class World {
   readonly entities = new EntityManager();
   readonly scheduler = new Scheduler();
+  readonly actions = new WorldActions(this);
 
   public add(actor: Actor) {
     this.addInternal(actor, this.scheduler.now);
