@@ -1,7 +1,7 @@
-import { Bag } from "../../items/bag/Bag";
-import { Item } from "../../items/Item";
-import { Constructor } from "../../util/Constructor";
-import { generalize } from "../../util/generalize";
+import { Bag } from "../items/bag/Bag";
+import { Item } from "../items/Item";
+import { Constructor } from "../util/Constructor";
+import { generalize } from "../util/generalize";
 
 export class Inventory {
   readonly bags: Bag[] = [];
